@@ -1,20 +1,12 @@
-version: "3.9"
 services:
   ros2:
     build: .
     network_mode: host
     ipc: host
     volumes:
-      - /home/robo/spot_micro:/home/ros
+      - /home/pi5/spot_micro:/home/ros
     devices:
-      - /dev/i2c-1        # for RPi I2C
-      - /dev/video0
-      - /dev/gpiomem      # for rpi.gpio
-      - /dev/input/js0    # for gamepad
-      - /dev/input/event0 # for gamepad
-      - /dev/input/event1 # for gamepad
-      - /dev/input/event2 # for gamepad
-#      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/i2c-1
+      - /dev/gpiomem0
+      - /dev/gpiochip0
     tty: true
-#    environment:
-#      - DISPLAY

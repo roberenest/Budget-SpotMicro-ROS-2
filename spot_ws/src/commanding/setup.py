@@ -1,7 +1,5 @@
 from setuptools import find_packages, setup
-
 package_name = 'commanding'
-
 setup(
     name=package_name,
     version='0.0.0',
@@ -21,7 +19,8 @@ setup(
     entry_points={
         'console_scripts': [
             'joy2joints = commanding.joy2joints:main',
-            'joy2cmd = commanding.joy2cmd:main'
+            'joy2cmd = commanding.joy2cmd:main',
+            'keyboard_cmd = commanding.keyboard_cmd:main',
         ],
     },
 )

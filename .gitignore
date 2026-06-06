@@ -31,3 +31,9 @@ qtcreator-*
 # Colcon custom files
 COLCON_IGNORE
 AMENT_IGNORE
+
+
+
+# The Backup Image and Yolo /Runs
+echo "*.img.gz" >> .gitignore
+echo "runs/" >> .gitignore

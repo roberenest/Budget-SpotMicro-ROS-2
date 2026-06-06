@@ -1,4 +1,3 @@
-
 from rclpy import logging
 
 from spot_interfaces.msg import JointAngles
@@ -12,28 +11,16 @@ import motion_control.lib.poses as poses
 
 
 class BaseState():
-    """
-    Base class for a state machine to handle motion (and stationary poses) of a 
-    Spot Micro robot.
-    """
-
     def __init__(self):
         pass
 
     def next_state_from_cmd(self, cmd, state_cmd):
-        # no state transitions in base state, just return self
         return self
 
     def joint_angles_from_cmd(self, current_angles, cmd, state_cmd):
-        # Base State does no action, so just return current angles unchanged
         return current_angles
 
 class SitState(BaseState):
-    """
-    Class to handle the sitting state of a spot micro. Includes functionality
-    to transition from a non-sitting pose to a sitting pose.
-    """
-
     def __init__(self):
         self._sit_angles = poses.get_sitting_pose()
 
@@ -60,12 +47,7 @@ class SitState(BaseState):
         return target_angles
 
 class StandState(BaseState):
-    """
-    Class to handle the standing state of a spot micro. Includes functionality
-    to transition from a non-standing pose to a standing pose.
-    """
     def __init__(self):
-        # SpotKinematics defaults to correct size and standing pose
         self._kinematics = SpotKinematics()
 
     def next_state_from_cmd(self, cmd, state_cmd):
@@ -78,22 +60,17 @@ class StandState(BaseState):
         return self
 
     def joint_angles_from_cmd(self, current_angles, cmd, state_cmd, max_angle_delta):
-        # TODO: look at cmd.linear.y to see if we should raise/lower
-        self._kinematics.set_body_angles(body_pitch_rad = cmd.angular.z, body_roll_rad = cmd.angular.x, body_yaw_rad = cmd.angular.y)
+        self._kinematics.set_body_angles(body_pitch_rad=cmd.angular.z, body_roll_rad=cmd.angular.x, body_yaw_rad=cmd.angular.y)
         target_angles = self._kinematics.get_joint_angles()
         target_joints = mu.multi_joint_one_step_interp(current_angles, mu.np_array_to_joint_angles(target_angles), max_angle_delta)
         return target_joints
 
 class WalkState(BaseState):
-    """
-    Class to handle the walking state of a spot micro. Mostly serves as a wrapper for the WalkManager class.
-    """
     def __init__(self):
         self._walk_mgr = WalkManager()
 
     def next_state_from_cmd(self, cmd, state_cmd):
         if self._walk_mgr.is_standing(cmd):
-            # switch to stand state if we're stationary and in stand stance
             logging.get_logger("WalkState").info("transition to stand")
             return StandState()
         return self
