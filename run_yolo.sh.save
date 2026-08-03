@@ -1,0 +1,3 @@
+#!/bin/bash
+source ~/spot_micro/yolo/bin/activate
+detec

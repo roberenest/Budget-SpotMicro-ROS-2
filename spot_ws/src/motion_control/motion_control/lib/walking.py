@@ -24,7 +24,7 @@ class WalkManager():
         self._leg_up_height = 0.06
         self._leg_stride = 0.125
 
-        self._balance_roll = 0.2
+        self._balance_roll = 0.3
         self._balance_pitch_fwd = -0.2
         self._balance_pitch_back = 0.1
 
