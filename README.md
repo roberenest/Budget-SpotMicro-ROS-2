@@ -7,6 +7,10 @@
 [![Cost](https://img.shields.io/badge/Build%20Cost-Under%20%24500-brightgreen)]()
 [![Status](https://img.shields.io/badge/Status-Active%20Development-yellow)]()
 
+<p align="center">
+  <img src="Spotmicro_Standing.jpeg" alt="SpotMicro Search and Rescue Robot" width="700">
+</p>
+
 A low-cost quadruped robot built for Search and Rescue (SAR) operations. Based on the SpotMicro open hardware platform, modified to run on a Raspberry Pi 5 with dual PCA9685 servo controllers and ROS2 Jazzy. Capable of autonomous human detection via YOLOv26n, GPS location reporting, and offline operation over 1km range via LoRa radio — all for under $500.
 
 > Built as a student robotics project by [roberenest](https://github.com/roberenest).  
@@ -36,6 +40,10 @@ This robot walks on four legs, fits through tight spaces, climbs uneven terrain,
 - 🔧 Autonomous human detection alerts — in progress
 
 ---
+
+<p align="center">
+  <img src="Spotmicro_Demo2.gif" alt="SpotMicro walking demo" width="700">
+</p>
 
 ##  Hardware
 
