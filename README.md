@@ -42,7 +42,7 @@ This robot walks on four legs, fits through tight spaces, climbs uneven terrain,
 ---
 
 <p align="center">
-  <img src="Spotmicro_Demo2.gif" alt="SpotMicro walking demo" width="700">
+  <img src="Spotmicro_Demo2-ezgif.com-video-to-gif-converter.gif" alt="SpotMicro walking demo" width="700">
 </p>
 
 ##  Hardware
